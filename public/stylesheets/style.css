@@ -153,3 +153,9 @@ hr {
   text-decoration: none;
   font-size: 15px;
 }
+.error{
+  font-weight: 500;
+  color: #df0812;
+  text-transform: capitalize;
+  margin: 7px 0;
+}
