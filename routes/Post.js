@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/pinterest");
 const postSchema = new mongoose.Schema({
-  postText: {
+  imageText: {
     type: String,
     required: true,
   },
   user:{
 type: mongoose.Schema.Types.ObjectId,
 ref: "User"
+  },
+  Image:{
+type: String,
   },
   currentDateAndTime: {
     type: Date,
