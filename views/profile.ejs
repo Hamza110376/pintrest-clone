@@ -7,7 +7,7 @@
     <title>Profile</title>
   </head>
   <body>
-    <div class="menu">
+       <div class="menu">
       <img
         draggable="false"
         class="logo"
@@ -58,109 +58,37 @@
         <div tabindex="1" class="focus-bar btn-bar">¯\_( ͡° ͜ʖ ͡°)_/¯</div>
       </div>
     </div>
-    <!--------------------------->
-    <div class="responsive-search-bar">
-      <input type="text" />
-      <p class="close">❌</p>
+    <div class="container">
+        <div class="profile">  
+        </div>
+        <h3><%= user.fullname%></h3>
+        <p>@<%= user.username%>
+</p>
+<h5>0 following</h5>
+<div class="btn-container">
+    <button>share</button>
+    <button>Edit profile</button>
+</div>
+
     </div>
     <!--------------------------->
     <form method="post" action="/upload" enctype="multipart/form-data">
-      <input type="text name="filecaption" placeholder="some caption here">
+     <input type="text" name="fileCaption" placeholder="some text here">
       <input type="file" name="file"/>
       <button type="submit">Upload</button>
     </form>
-    <div class="container">
-
-        <div class="hover-zone">
-          <div class="top-bar">
-            <p>Profile ⌵</p>
-            <a>Save</a>
-          </div>
-          <!-------------------->
-          <div class="bottom-bar">
-            <a>↗ website.com</a>
-            <div class="radius-ico">
-              <img
-                draggable="false"
-                src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-10-256.png"
-              />
-              <img
-                draggable="false"
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-------------------->
-      <div class="window">
-        <img
-          class="foto"
-          src="https://i.pinimg.com/564x/cc/3a/4c/cc3a4c281e75b599b967e1bc8e6e3863.jpg"
-        />
-        <p class="content">Hover</p>
-        <img
-          class="user"
-          src="https://i.pinimg.com/236x/8b/2b/aa/8b2baa42f72980861f541a315446ec5f.jpg"
-        />
-        <a class="username">usamaladin</a>
-
-        <div class="hover-zone">
-          <div class="top-bar">
-            <p>Profile ⌵</p>
-            <a>Save</a>
-          </div>
-          <!-------------------->
-          <div class="bottom-bar">
-            <a>↗ website.com</a>
-            <div class="radius-ico">
-              <img
-                draggable="false"
-                src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-10-256.png"
-              />
-              <img
-                draggable="false"
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-------------------->
-      <div class="window">
-        <img
-          class="foto"
-          src="https://i.pinimg.com/236x/69/1b/17/691b1705fc94d871d2fc6207bf8c4fe8.jpg"
-        />
-        <p class="content">Yeeesss</p>
-        <img
-          class="user"
-          src="https://i.pinimg.com/236x/46/1d/f7/461df750a734b8c580246e6618c6919a.jpg"
-        />
-        <a class="username">anon</a>
-
-        <div class="hover-zone">
-          <div class="top-bar">
-            <p>Profile ⌵</p>
-            <a>Save</a>
-          </div>
-          <!-------------------->
-          <div class="bottom-bar">
-            <a>↗ website.com</a>
-            <div class="radius-ico">
-              <img
-                draggable="false"
-                src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-10-256.png"
-              />
-              <img
-                draggable="false"
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+   <div class="container2">
+   
+          <% user.post.forEach(function(post){%>
+  <div class="card">
+  <img src="/images/uploads/<%= post.image%>" alt="Placeholder Image">
+  <div class="caption">
+    <p><%=post.imageText%></p>
+  </div>
+</div>
+    <% }) %>
+    
+   </div>
     <script>
       document.getElementById("two").onclick = function () {
         document.getElementById("two").style.pointerEvents = "none";
@@ -172,6 +100,7 @@
         document.getElementById("two").style.opacity = "1";
         document.querySelector(".responsive-search-bar").style.top = "-300px";
       };
+    
     </script>
   </body>
 </html>

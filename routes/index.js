@@ -16,17 +16,23 @@ router.get("/feed", function (req, res, next) {
 router.post("/upload",isLoggedIn,upload.single('file'), async function(req, res) {
   if (!req.file) {
    return res.status(400).send("no files were uploaded.")
-  }
+  };
   const user= await userModel.findOne({username: req.session.passport.user});
-  postModel.create({
+  const post = await postModel.create({
     image: req.file.filename,
-    imageText: req.body.filecaption,
+    imageText: req.body.fileCaption,
     user: user._id,
-  })
+  });
+  user.post.push(post._id);
+  await user.save();
+  res.redirect("/profile");
 });
 
 router.get("/profile",isLoggedIn,async function (req, res, next) {
-  const user= await userModel.findOne({username: req.session.passport.user})
+  const user = await userModel
+    .findOne({ username: req.session.passport.user })
+    .populate("post")
+ console.log(user)
   res.render("profile", {user})
 });
 router.get("/login", function (req, res, next) {
